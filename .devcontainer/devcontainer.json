@@ -1,0 +1,47 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/rust-postgres
+{
+	"name": "Dex Server",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
+	// "features": {}
+  
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+  
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [5432],
+  
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chown -R vscode:rustlang /usr/local/cargo && sudo chmod -R g+rw /usr/local/cargo"
+  
+	// Configure tool-specific properties.
+	"customizations": {
+	  "vscode": {
+		"settings": {
+		  "lldb.executable": "/usr/bin/lldb",
+		  "files.watcherExclude": {
+			"**/target/**": true
+		  },
+		  "rust-analyzer.checkOnSave.command": "clippy"
+		},
+		"extensions": [
+		  "vadimcn.vscode-lldb",
+		  "mutantdino.resourcemonitor",
+		  "rust-lang.rust-analyzer",
+		  "tamasfe.even-better-toml",
+		  "fill-labs.dependi"
+		]
+	  }
+	},
+	"remoteEnv": {
+	  "HOST_PROJECT_PATH": "${localWorkspaceFolder}",
+	  "EMAIL": "${localEnv:EMAIL}",
+	  "NAME": "${localEnv:NAME}"
+	}
+  
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+  }
+  
