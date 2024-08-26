@@ -4,3 +4,14 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+axum = { version = "0.7.5", features = ["ws", "macros"] }
+tokio = { version = "1.39.2", features = ["rt-multi-thread"] }
+hyper = "1.4.1"
+futures = "0.3.30"
+tower = { version = "0.5.0", features = ["util"] }
+dotenv = "0.15.0"
+validator = { version = "0.18.1", features = ["derive"] }
+serde = { version = "1.0.208", features = ["derive"] }
+serde_json = "1.0.125"
+thiserror = "1.0.63"
+jsonwebtoken = "9.3.0"
