@@ -16,6 +16,17 @@ RUN rustup component add rustfmt clippy
 
 
 RUN cargo install cornucopia
+RUN cargo install cargo-watch
+
+ARG MOLD_VERSION=2.33.0
+RUN curl -OL https://github.com/rui314/mold/releases/download/v${MOLD_VERSION}/mold-${MOLD_VERSION}-aarch64-linux.tar.gz
+RUN tar -xf mold-${MOLD_VERSION}-aarch64-linux.tar.gz
+RUN mv ./mold-${MOLD_VERSION}-aarch64-linux/bin/mold /usr/bin/
+RUN mv ./mold-${MOLD_VERSION}-aarch64-linux/lib/mold/mold-wrapper.so /usr/bin/
+RUN rm mold-${MOLD_VERSION}-aarch64-linux.tar.gz
+RUN rm -rf ./mold-${MOLD_VERSION}-aarch64-linux
+RUN chmod +x /usr/bin/mold
+
 
 COPY ps1.bash .
 RUN cat ps1.bash >> ~/.bashrc && sudo rm ps1.bash
