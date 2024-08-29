@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+db = { version = "0.0.1", path = "../db" }
+dex_core = { version = "0.0.1", path = "../core" }
+
 axum = { version = "0.7.5", features = ["ws", "macros"] }
 tokio = { version = "1.39.2", features = ["rt-multi-thread"] }
 hyper = "1.4.1"
@@ -14,3 +17,13 @@ serde = { version = "1.0.208", features = ["derive"] }
 serde_json = "1.0.125"
 thiserror = "1.0.63"
 jsonwebtoken = "9.3.0"
+bs58 = "0.5.1"
+time = { version = "0.3.36", default-features = false, features = [
+    "formatting",
+    "serde",
+] }
+tokio-postgres = { version = "0.7.11", features = [
+    "with-time-0_3",
+    "with-serde_json-1",
+] }
+rand = "0.8.5"

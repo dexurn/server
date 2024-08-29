@@ -4,5 +4,7 @@ use server::{bootstrap, config::Config};
 async fn main() {
     let config = Config::new();
 
-    bootstrap(config).await;
+    let pool = db::create_pool(&config.database_url);
+
+    bootstrap(config, pool).await;
 }
