@@ -1,4 +1,5 @@
 pub mod event;
+pub mod handlers;
 
 use axum::{
     extract::{ws, State, WebSocketUpgrade},
