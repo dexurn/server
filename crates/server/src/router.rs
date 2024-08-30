@@ -11,10 +11,11 @@ use crate::{
         auth::{handshake, login},
         ping::ping,
     },
+    state::AppState,
     websocket::websocket,
 };
 
-pub fn create_router(config: Config, pool: db::Pool) -> Router {
+pub fn create_router(config: Config, pool: db::Pool, state: AppState) -> Router {
     Router::new()
         .route("/websocket", get(websocket))
         .route_layer(middleware::from_fn(protected_routes))
@@ -23,4 +24,5 @@ pub fn create_router(config: Config, pool: db::Pool) -> Router {
         .route("/auth/handshake", post(handshake))
         .layer(Extension(config))
         .layer(Extension(pool))
+        .with_state(state)
 }
