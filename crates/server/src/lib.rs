@@ -6,6 +6,7 @@ use router::create_router;
 pub mod config;
 pub mod error;
 pub mod extractors;
+pub mod middleware;
 pub mod router;
 pub mod routes;
 pub mod utilities;
