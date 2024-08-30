@@ -1,3 +1,5 @@
+pub mod event;
+
 use axum::{
     extract::{ws, State, WebSocketUpgrade},
     response::IntoResponse,
