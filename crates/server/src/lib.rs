@@ -9,6 +9,7 @@ pub mod extractors;
 pub mod router;
 pub mod routes;
 pub mod utilities;
+pub mod websocket;
 
 pub async fn bootstrap(config: Config, pool: db::Pool) {
     let port = config.port;
